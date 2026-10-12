@@ -70,7 +70,7 @@ rule_engine, ml_engine = initialize_detectors()
 
 # Step 3: Page Header
 st.markdown("""
-# 🛡️ Session Guard
+#  Session Guard
 ### Session Hijacking Detection Platform
 Real-time telemetry analysis using rule-based validation and behavioral anomaly detection.
 """)
@@ -157,7 +157,7 @@ left, right = st.columns(2, gap="large")
 
 with left:
     with st.container(border=True):
-        st.subheader("🛡️ Rule-Based Engine")
+        st.subheader(" Rule-Based Engine")
         st.caption("Policy validation")
         st.write(f"Execution Latency: `{rule_eval['latency_ms']:.4f} ms`")
 
@@ -165,7 +165,7 @@ with left:
         if rule_eval["is_hijacked"]:
             st.error("BLOCKED — High-risk session detected")
             for violation in rule_eval["violations"]:
-                st.write(f"- ❌ {violation}")
+                st.write(f"-  {violation}")
         else:
             st.success("PASS — Session matches the baseline")
             st.write("- ✔️ IP conforms to authorized subnet boundary")
@@ -177,7 +177,7 @@ with left:
 
 with right:
     with st.container(border=True):
-        st.subheader("📊 Behavioral Anomaly Engine")
+        st.subheader(" Behavioral Anomaly Engine")
         st.caption("Behavioral profiling")
         st.write(f"Execution Latency: `{ml_eval['latency_ms']:.4f} ms`")
 
@@ -187,10 +187,10 @@ with right:
         if ml_eval["is_anomaly"] or risk_score >= 65.0:
             st.error("BLOCKED — High-risk session detected")
             for ind in ml_eval["indicators"]:
-                st.write(f"- ⚠️ {ind}")
+                st.write(f"-  {ind}")
         elif risk_score >= 45.0:
             st.warning("WARNING — Suspicious behavior detected")
-            st.write("- ⚠️ Moderate deviation from expected interaction profile")
+            st.write("-  Moderate deviation from expected interaction profile")
         else:
             st.success("PASS — Session matches the baseline")
             st.write("- ✔️ Cadence matches human user browsing")
